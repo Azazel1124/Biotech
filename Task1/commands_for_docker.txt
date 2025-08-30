@@ -1,0 +1,9 @@
+docker login
+
+docker build -t your-username/hello-world:latest .
+
+docker run -p 32777:32777 -e AUTHOR="Студент" your-username/hello-world:latest
+
+docker push your-username/hello-world:latest
+
+docker stop $(docker ps -q --filter ancestor=your-username/hello-world:latest)

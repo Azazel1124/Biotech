@@ -1,0 +1,22 @@
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+minikube start --driver=docker
+
+minikube status
+
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+
+kubectl get pods
+kubectl get services
+
+minikube service hello-world-service
+
+kubectl port-forward service/hello-world-service 8080:32777
+
+kubectl logs -l app=hello-world
+
+minikube stop
+
+minikube delete
